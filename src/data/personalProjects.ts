@@ -17,7 +17,7 @@ export const personalProjects = {
         "Jest",
         "xUnit",
       ],
-      repoUrl: "", // pega aquí el link del repo
+      repoUrl: "https://github.com/Brigham0812Buho/reto_tecnico_experis", 
     },
     {
       id: "viaja-cusco-tours",
@@ -26,6 +26,22 @@ export const personalProjects = {
         "Landing page turística freelance: diseño, implementación y despliegue, con optimización SEO para mejorar visibilidad en buscadores.",
       stack: ["Next.js", "Tailwind CSS", "Vercel", "SEO"],
       demoUrl: "https://www.viajacuscotours.com",
+    },
+    {
+      id: "resbooker-api",
+      title: "ResBooker API — Reservas de recursos compartidos",
+      description:
+        "API REST y GraphQL para gestión de reservas de recursos compartidos (salas, tours, equipos), con Clean Architecture por features, autenticación JWT con roles, stored procedures transaccionales en MySQL para evitar overbooking, y documentación interactiva con Swagger.",
+      stack: [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "GraphQL",
+        "MySQL",
+        "JWT",
+        "Swagger",
+      ],
+      repoUrl: "https://github.com/Brigham0812Buho/resbooker-api",
     },
   ] as Project[],
 
@@ -45,7 +61,7 @@ export const personalProjects = {
         "Jest",
         "xUnit",
       ],
-      repoUrl: "",
+      repoUrl: "https://github.com/Brigham0812Buho/reto_tecnico_experis",
     },
     {
       id: "viaja-cusco-tours",
@@ -54,6 +70,22 @@ export const personalProjects = {
         "Tourism landing page (freelance): design, implementation and deployment, with SEO optimization to improve visibility on search engines.",
       stack: ["Next.js", "Tailwind CSS", "Vercel", "SEO"],
       demoUrl: "https://www.viajacuscotours.com",
+    },
+    {
+      id: "resbooker-api",
+      title: "ResBooker API — Shared resource booking",
+      description:
+        "REST and GraphQL API for managing shared resource bookings (rooms, tours, equipment), with Clean Architecture organized by features, JWT authentication with roles, transactional MySQL stored procedures to prevent overbooking, and interactive Swagger documentation.",
+      stack: [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "GraphQL",
+        "MySQL",
+        "JWT",
+        "Swagger",
+      ],
+      repoUrl: "https://github.com/Brigham0812Buho/resbooker-api",
     },
   ] as Project[],
 };
