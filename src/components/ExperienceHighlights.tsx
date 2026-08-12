@@ -14,9 +14,9 @@ export function ExperienceHighlights({ experiences }: { experiences: Experience[
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        {experiences.map((exp, index) => (
+        {experiences.map(({ id, type, startDate, endDate, company, role, description, stack, url }, index) => (
           <motion.article
-            key={exp.id}
+            key={id}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
@@ -25,16 +25,16 @@ export function ExperienceHighlights({ experiences }: { experiences: Experience[
           >
             <div className="mb-4 flex items-center justify-between gap-3">
               <span className="rounded-full bg-accent-secondary/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-secondary">
-                {exp.type === "freelance" ? "Freelance" : "Empleo"}
+                {type === "freelance" ? "Freelance" : "Empleo"}
               </span>
-              <span className="text-[11px] font-semibold text-muted">{exp.startDate} — {exp.endDate}</span>
+              <span className="text-[11px] font-semibold text-muted">{startDate} — {endDate}</span>
             </div>
 
-            <h3 className="text-lg font-semibold text-foreground">{exp.company}</h3>
-            <p className="mt-1 text-sm text-muted">{exp.role}</p>
+            <h3 className="text-lg font-semibold text-foreground">{company}</h3>
+            <p className="mt-1 text-sm text-muted">{role}</p>
 
             <ul className="mt-4 space-y-2 text-sm text-foreground/90">
-              {exp.description.slice(0, 2).map((line, i) => (
+              {description.slice(0, 2).map((line, i) => (
                 <li key={i} className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent" />
                   <span>{line}</span>
@@ -43,7 +43,7 @@ export function ExperienceHighlights({ experiences }: { experiences: Experience[
             </ul>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {exp.stack.slice(0, 4).map((tech) => (
+              {stack.slice(0, 4).map((tech) => (
                 <span
                   key={tech}
                   className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-medium text-accent"
@@ -53,9 +53,9 @@ export function ExperienceHighlights({ experiences }: { experiences: Experience[
               ))}
             </div>
 
-            {exp.url && (
+            {url && (
               <a
-                href={exp.url}
+                href={url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex text-sm font-medium text-accent-secondary underline underline-offset-4"

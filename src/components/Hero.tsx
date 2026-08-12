@@ -9,8 +9,8 @@ import { FeatureCard } from "@/components/ui/FeatureCard";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function Hero() {
-  const { t } = useLanguage();
-  const { name, role, location, englishLevel } = personalInfo;
+  const { translations, locale } = useLanguage();
+  const { name, role, location, englishLevel } = personalInfo[locale];
   const {
     summary,
     projects,
@@ -20,10 +20,13 @@ export function Hero() {
     mobile,
     desktop,
     delivery,
+    experience,
+    englishLevelLabel,
+    fullStack,
     mobileDescription = "",
     desktopDescription = "",
     deliveryDescription = "",
-  } = t.hero;
+  } = translations.hero;
 
   return (
     <section className="px-4 md:px-8 max-w-[1400px] mx-auto py-5 md:py-7">
@@ -33,7 +36,7 @@ export function Hero() {
             <Animated className="rounded-full float-slow">
               <Image
                 src="/assets/perfil/foto-perfil.jpg"
-                alt={personalInfo.name}
+                alt={name}
                 width={64}
                 height={64}
                 className="rounded-full object-cover border-2 border-border"
@@ -72,10 +75,13 @@ export function Hero() {
               Full Stack
             </span>
             <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
-              +3 años de experiencia
+              {fullStack}
             </span>
             <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
-              Inglés: {englishLevel}
+              {experience}
+            </span>
+            <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
+              {englishLevelLabel}: {englishLevel}
             </span>
           </div>
 
@@ -101,8 +107,8 @@ export function Hero() {
 
             <Animated>
               <a
-                href="/assets/perfil/cv.pdf"
-                download="cv-gary-chunga.pdf"
+                href={`/assets/perfil/${locale === "en" ? "resume.pdf" : "cv.pdf"}`}
+                download={locale === "en" ? "resume-gary-chunga.pdf" : "cv-gary-chunga.pdf"}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-[rgba(93,224,255,0.22)] bg-[rgba(255,255,255,0.05)] text-foreground hover:border-accent-secondary transition font-medium text-sm"
               >
                 {downloadCV}

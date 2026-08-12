@@ -5,15 +5,15 @@ import { Logo } from "@/components/Logo";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function Navbar() {
-  const { locale, setLocale, t } = useLanguage();
-  const { home, experience, projects, contact, context } = t.navbar;
+  const { locale, setLocale, translations } = useLanguage();
+  const { home, experience, projects, contact, context } = translations.navbar;
 
   return (
     <header className="sticky top-0 z-20 bg-[rgba(5,12,26,0.95)] backdrop-blur border-b border-[rgba(93,224,255,0.18)]">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 h-12 flex items-center justify-between gap-3">
         <Link
           href="/"
-          aria-label={t.navbar.home}
+          aria-label={home}
           className="flex items-center gap-2 rounded-full border border-[rgba(93,224,255,0.24)] bg-[rgba(93,224,255,0.06)] px-2 py-1"
         >
           <Logo size={28} />

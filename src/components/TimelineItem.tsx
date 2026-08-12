@@ -19,6 +19,7 @@ import {
   SiVercel,
 } from "react-icons/si";
 import type { Experience } from "@/types";
+import { useLanguage } from "@/components/LanguageProvider";
 import { Badge } from "@/components/ui/Badge";
 import { GlassCard } from "@/components/ui/GlassCard";
 
@@ -55,15 +56,18 @@ export function TimelineItem({
   exp: Experience;
   index: number;
 }) {
-  const initials = exp.company
+  const { translations } = useLanguage();
+  const { company, startDate, endDate, type, description, stack, url, role } = exp;
+
+  const initials = company
     .split(" ")
     .map((part) => part[0])
     .join("")
     .slice(0, 2)
     .toUpperCase();
 
-  const yearMatch = exp.startDate.match(/(\d{4})$/);
-  const year = yearMatch ? yearMatch[1] : exp.startDate.split(" ").pop();
+  const yearMatch = startDate.match(/(\d{4})$/);
+  const year = yearMatch ? yearMatch[1] : startDate.split(" ").pop();
 
   return (
     <motion.div
@@ -80,13 +84,15 @@ export function TimelineItem({
       >
         <GlassCard className="h-full">
           <div className="mb-3 flex items-start justify-between gap-3">
-            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-secondary text-xs font-bold text-background shadow-sm">
                 {initials}
               </div>
               <div>
-                <Badge variant="soft">{exp.type === "freelance" ? "Freelance" : "Empleo"}</Badge>
-                <p className="mt-2 text-sm text-muted">{exp.startDate} — {exp.endDate}</p>
+                <Badge variant="soft">
+                  {type === "freelance" ? translations.timeline.freelanceLabel : translations.timeline.employmentLabel}
+                </Badge>
+                <p className="mt-2 text-sm text-muted">{startDate} — {endDate}</p>
               </div>
             </div>
             <div className="rounded-full border border-border bg-background/70 px-3 py-1 text-[11px] font-semibold text-accent-secondary">
@@ -95,12 +101,12 @@ export function TimelineItem({
           </div>
 
           <div className="mb-3">
-            <h3 className="text-lg font-semibold text-foreground md:text-xl">{exp.company}</h3>
-            <p className="mt-1 text-sm text-muted">{exp.role}</p>
+            <h3 className="text-lg font-semibold text-foreground md:text-xl">{company}</h3>
+            <p className="mt-1 text-sm text-muted">{role}</p>
           </div>
 
           <ul className="mt-3 space-y-2 text-sm text-foreground/90">
-            {exp.description.slice(0, 2).map((line, i) => (
+            {description.slice(0, 2).map((line, i) => (
               <li key={i} className="flex gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-secondary" />
                 <span>{line}</span>
@@ -109,7 +115,7 @@ export function TimelineItem({
           </ul>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {exp.stack.map((tech) => {
+            {stack.map((tech) => {
               const Icon = getTechIcon(tech);
               return (
                 <span
@@ -123,14 +129,14 @@ export function TimelineItem({
             })}
           </div>
 
-          {exp.url && (
+          {url && (
             <a
-              href={exp.url}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-secondary underline-offset-4 hover:underline"
             >
-              {exp.type === "empleo" ? "Ver empresa →" : "Ver sitio →"}
+              {type === "empleo" ? translations.timeline.viewCompanyLabel : translations.timeline.viewSiteLabel}
             </a>
           )}
         </GlassCard>

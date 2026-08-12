@@ -22,10 +22,27 @@ type Translations = {
     mobile: string;
     desktop: string;
     delivery: string;
-    englishLevel: string;
+    experience: string;
+    englishLevelLabel: string;
+    fullStack: string;
     mobileDescription?: string;
     desktopDescription?: string;
     deliveryDescription?: string;
+  };
+  projects: {
+    eyebrow: string;
+    title: string;
+    caseLabel: string;
+    viewSiteLabel: string;
+    technologiesLabel: string;
+  };
+  timeline: {
+    eyebrow: string;
+    title: string;
+    freelanceLabel: string;
+    employmentLabel: string;
+    viewCompanyLabel: string;
+    viewSiteLabel: string;
   };
   contact: {
     talk: string;
@@ -36,17 +53,38 @@ type Translations = {
     downloadCV: string;
     fastReply: string;
     services: string;
+    serviceCards: Array<{ title: string; desc: string }>;
     projectField: string;
+    projectTypeLabel: string;
+    projectOptions: string[];
+    placeholder: string;
+    defaultProjectMessage: string;
     email: string;
+    emailCardTitle: string;
+    emailCardFooter: string;
     whatsapp: string;
-    coverage: string;
     githubCard: string;
+    githubFooter: string;
     linkedinCard: string;
+    linkedinFooter: string;
     cvCard: string;
+    cvFooter: string;
+    coverage: string;
+    quoteLabel: string;
+    quoteTitle: string;
+    mailSubjectPrefix: string;
+    mailBodyIntro: string;
+    mailBodyDescriptionLabel: string;
+    mailBodySignOff: string;
+    whatsappTextIntro: string;
+    whatsappTextFooter: string;
+    employeeDescription: string;
+    freelanceDescription: string;
+    viewSiteLabel: string;
   };
 };
 
-const translations: Record<Locale, Translations> = {
+const allTranslations: Record<Locale, Translations> = {
   es: {
     navbar: {
       home: "Inicio",
@@ -66,13 +104,31 @@ const translations: Record<Locale, Translations> = {
       mobile: "Móvil",
       desktop: "Escritorio",
       delivery: "Entrega",
+      experience: "+3 años de experiencia",
+      englishLevelLabel: "Inglés",
+      fullStack: "Full Stack",
       mobileDescription: "Apps móviles con UX clara, flujo funcional y rendimiento fluido.",
       desktopDescription: "Sistemas internos y dashboards con supervisión, automatización y control de datos.",
       deliveryDescription: "Diseño, lógica, despliegue y mantenimiento continuo para web, móvil y escritorio.",
-      englishLevel: "Intermedio",
+    },
+    projects: {
+      eyebrow: "Proyectos",
+      title: "Casos relevantes y entregables concretos",
+      caseLabel: "Caso",
+      viewSiteLabel: "Ver sitio →",
+      technologiesLabel: "tecnologías",
+    },
+    timeline: {
+      eyebrow: "Experiencia",
+      title: "Mi recorrido profesional",
+      freelanceLabel: "Freelance",
+      employmentLabel: "Empleo",
+      viewCompanyLabel: "Ver empresa →",
+      viewSiteLabel: "Ver sitio →",
     },
     contact: {
       talk: "Hablemos",
+
       projectTitle: "¿Qué proyecto quieres construir?",
       projectDescription:
         "Desarrollo web, apps y sistemas con enfoque senior, pensando en claridad de negocio, rendimiento y entregables profesionales.",
@@ -81,13 +137,52 @@ const translations: Record<Locale, Translations> = {
       downloadCV: "Descargar CV",
       fastReply: "Respuesta rápida",
       services: "Servicios",
+      serviceCards: [
+        {
+          title: "Landing pages",
+          desc: "Presentación clara y con foco en conversión.",
+        },
+        {
+          title: "Apps web",
+          desc: "Interfaces modernas con experiencia de usuario sólida.",
+        },
+        {
+          title: "Sistemas internos",
+          desc: "Dashboards, procesos, CRUD y automatización.",
+        },
+        {
+          title: "E-commerce",
+          desc: "Catálogo, pagos, pedidos y seguimiento.",
+        },
+      ],
       projectField: "Describe tu proyecto",
+      projectTypeLabel: "Tipo de proyecto",
+      projectOptions: ["Landing page", "Aplicación web", "Sistema interno", "E-commerce"],
+      placeholder:
+        "Necesito una landing page con SEO, formulario, integración con WhatsApp y panel administrativo...",
+      defaultProjectMessage: "Necesito una cotización.",
       email: "Enviar por email",
+      emailCardTitle: "Email",
+      emailCardFooter: "",
       whatsapp: "WhatsApp",
-      coverage: "Perú en general · remoto / presencial",
       githubCard: "GitHub",
+      githubFooter: "Revisa mi código",
       linkedinCard: "LinkedIn",
+      linkedinFooter: "Mi red profesional",
       cvCard: "CV",
+      cvFooter: "Versión descargable",
+      coverage: "Perú en general · remoto / presencial",
+      mailSubjectPrefix: "Cotización ·",
+      mailBodyIntro: "Hola Gary,\n\nQuiero cotizar un proyecto de tipo:",
+      mailBodyDescriptionLabel: "Descripción:",
+      mailBodySignOff: "\n\nSaludos.",
+      whatsappTextIntro: "Hola Gary, quiero cotizar un proyecto de tipo",
+      whatsappTextFooter: ".\n\n",
+      employeeDescription:"",
+      freelanceDescription:"",
+      viewSiteLabel: "Ver sitio →",
+      quoteLabel: "Cotización",
+      quoteTitle: "Solicita tu cotización",
     },
   },
   en: {
@@ -104,15 +199,32 @@ const translations: Record<Locale, Translations> = {
         "Full Stack developer with experience in web, mobile and enterprise systems. I work on CRM, ERP and monitoring projects, focusing on delivery, performance and architecture.",
       projects: "View projects",
       contact: "Contact me",
-      downloadCV: "Download CV",
+      downloadCV: "Download Resume",
       focus: "Focus",
       mobile: "Mobile",
       desktop: "Desktop",
       delivery: "Delivery",
+      experience: "+3 years of experience",
+      englishLevelLabel: "English",
+      fullStack: "Full Stack",
       mobileDescription: "Mobile apps with clear UX and functional flow.",
       desktopDescription: "Internal systems, dashboards and business tools.",
       deliveryDescription: "Design, business logic, deployment and continuous maintenance across web, mobile and desktop.",
-      englishLevel: "Intermediate",
+    },
+    projects: {
+      eyebrow: "Projects",
+      title: "Relevant cases and concrete deliverables",
+      caseLabel: "Case",
+      viewSiteLabel: "View site →",
+      technologiesLabel: "technologies",
+    },
+    timeline: {
+      eyebrow: "Experience",
+      title: "My professional journey",
+      freelanceLabel: "Freelance",
+      employmentLabel: "Employment",
+      viewCompanyLabel: "View company →",
+      viewSiteLabel: "View site →",
     },
     contact: {
       talk: "Let’s talk",
@@ -121,16 +233,55 @@ const translations: Record<Locale, Translations> = {
         "Web development, apps and systems with a senior mindset, prioritizing business clarity, performance and professional delivery.",
       employee: "I’m hiring",
       freelance: "I’m looking for a freelancer",
-      downloadCV: "Download CV",
+      downloadCV: "Download Resume",
       fastReply: "Quick reply",
       services: "Services",
+      serviceCards: [
+        {
+          title: "Landing pages",
+          desc: "Clear layouts focused on conversion.",
+        },
+        {
+          title: "Web apps",
+          desc: "Modern interfaces with strong user experience.",
+        },
+        {
+          title: "Internal systems",
+          desc: "Dashboards, workflows, CRUD and automation.",
+        },
+        {
+          title: "E-commerce",
+          desc: "Catalog, payments, orders and tracking.",
+        },
+      ],
       projectField: "Describe your project",
+      projectTypeLabel: "Project type",
+      projectOptions: ["Landing page", "Web app", "Internal system", "E-commerce"],
+      placeholder:
+        "I need a landing page with SEO, form, WhatsApp integration and admin panel...",
+      defaultProjectMessage: "I need a quote.",
       email: "Send by email",
+      emailCardTitle: "Email",
+      emailCardFooter: "",
       whatsapp: "WhatsApp",
-      coverage: "Peru in general · remote / onsite",
       githubCard: "GitHub",
+      githubFooter: "Check my code",
       linkedinCard: "LinkedIn",
+      linkedinFooter: "My professional network",
       cvCard: "CV",
+      cvFooter: "Downloadable version",
+      coverage: "Peru in general · remote / onsite",
+      mailSubjectPrefix: "Quote ·",
+      mailBodyIntro: "Hello Gary,\n\nI would like to request a quote for a project type:",
+      mailBodyDescriptionLabel: "Description:",
+      mailBodySignOff: "\n\nRegards.",
+      whatsappTextIntro: "Hello Gary, I would like a quote for a project type",
+      whatsappTextFooter: ".\n\n",
+      employeeDescription:"",
+      freelanceDescription:"",
+      viewSiteLabel: "View site →",
+      quoteLabel: "Quote",
+      quoteTitle: "Request your quote",
     },
   },
 };
@@ -138,7 +289,7 @@ const translations: Record<Locale, Translations> = {
 type LanguageContextValue = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: Translations;
+  translations: Translations;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -160,7 +311,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   const value = useMemo(
-    () => ({ locale, setLocale, t: translations[locale] }),
+    () => ({ locale, setLocale, translations: allTranslations[locale] }),
     [locale]
   );
 
