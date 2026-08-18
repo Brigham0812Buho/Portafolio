@@ -42,6 +42,21 @@ export const personalProjects = {
         "Swagger",
       ],
       repoUrl: "https://github.com/Brigham0812Buho/resbooker-api",
+    },{
+      id: "facturacion-api",
+      title: "Facturación API — Sistema de facturación electrónica",
+      description:
+        "API REST para gestión de facturación electrónica desarrollada con FastAPI y Clean Architecture. Incluye gestión de clientes, productos y facturas, integración con SQL Server y procedimientos almacenados, con lógica preparada para integrarse con servicios de facturación electrónica.",
+      stack: [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "Pydantic",
+        "SQL Server",
+        "Stored Procedures",
+        "REST API",
+      ],
+      repoUrl: "https://github.com/Brigham0812Buho/facturacion-api",
     },
   ] as Project[],
 
@@ -86,6 +101,23 @@ export const personalProjects = {
         "Swagger",
       ],
       repoUrl: "https://github.com/Brigham0812Buho/resbooker-api",
+    },
+    {
+      id: "facturacion-api",
+      title: "Billing API — Electronic invoicing system",
+      description:
+        "REST API for electronic invoicing built with FastAPI and Clean Architecture. Includes customer, product and invoice management, SQL Server integration and stored procedures, with business logic prepared for integration with electronic invoicing services.",
+      stack: [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "Pydantic",
+        "SQL Server",
+        "pyodbc",
+        "Stored Procedures",
+        "REST API",
+      ],
+      repoUrl: "https://github.com/Brigham0812Buho/facturacion-api",
     },
   ] as Project[],
 };
