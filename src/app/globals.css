@@ -5,14 +5,14 @@
    Fondo neutro casi negro + un solo acento cálido (ámbar).
 ------------------------------------------------------------------- */
 :root {
-  --background: #0b0b0d;
-  --surface: #121215;
-  --surface-2: #18181c;
-  --foreground: #ededef;
-  --muted: #a1a1aa;
-  --subtle: #71717a;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  --background: #18181c;
+  --surface: #212127;
+  --surface-2: #29292f;
+  --foreground: #f4f4f5;
+  --muted: #b9b9c2;
+  --subtle: #8e8e98;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
   --accent: #e5a663;
   --accent-secondary: #f0c08c;
   --accent-foreground: #1a1007;
@@ -43,7 +43,7 @@ html {
 
 body {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(229, 166, 99, 0.09), transparent 60%),
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(229, 166, 99, 0.12), transparent 60%),
     var(--background);
   background-attachment: fixed;
   color: var(--foreground);
