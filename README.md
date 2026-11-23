@@ -52,4 +52,4 @@ Gary Brigham Chunga Castillo
 
 - Email: 182900@unsaac.edu.pe
 - GitHub: https://github.com/Brigham0812Buho
-- LinkedIn: https://linkedin.com/in/GaryBrighamChungaCastillo
+- LinkedIn: https://linkedin.com/in/gary-brigham-chunga-castillo-523627199/

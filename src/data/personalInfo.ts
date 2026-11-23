@@ -11,7 +11,7 @@ export const personalInfo = {
     location: "Cusco, Perú",
     englishLevel: "Intermedio (B1)",
     github: "https://github.com/Brigham0812Buho",
-    linkedin: "https://linkedin.com/in/GaryBrighamChungaCastillo",
+    linkedin: "https://linkedin.com/in/gary-brigham-chunga-castillo-523627199/",
   } as PersonalInfo,
   en: {
     name: "Gary Brigham Chunga Castillo",
@@ -23,6 +23,6 @@ export const personalInfo = {
     location: "Cusco, Peru",
     englishLevel: "Intermediate (B1)",
     github: "https://github.com/Brigham0812Buho",
-    linkedin: "https://linkedin.com/in/GaryBrighamChungaCastillo",
+    linkedin: "https://linkedin.com/in/gary-brigham-chunga-castillo-523627199/",
   } as PersonalInfo,
 };
