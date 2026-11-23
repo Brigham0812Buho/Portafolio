@@ -2,18 +2,20 @@ import { TechCategory } from "@/types";
 
 export const techStack = {
   es: [
-    { category: "Lenguajes", items: ["JavaScript", "TypeScript", "Dart", "PHP", "C#"] },
-    { category: "Frontend", items: ["React", "Flutter", "Tailwind CSS", "Bootstrap", "Material UI", "HTML", "CSS"] },
-    { category: "Backend", items: ["Node.js", "PHP", ".NET Framework 4.5", "GraphQL", "Tauri"] },
-    { category: "Bases de Datos", items: ["MySQL", "SQLite", "IndexedDB", "SQL Server"] },
-    { category: "Herramientas", items: ["Git", "Docker", "Swagger", "TCP/Sockets", "OCR (Tesseract)", "Inno Setup", "PM2", "Vercel"] },
+    { category: "Lenguajes", items: ["Java", "JavaScript", "TypeScript", "Dart", "PHP", "C#"] },
+    { category: "Backend", items: ["Spring Boot", "Node.js", "PHP", ".NET Framework 4.5", "GraphQL", "APIs REST"] },
+    { category: "Frontend y Móvil", items: ["Angular", "React", "Flutter", "Tauri", "Tailwind CSS", "Bootstrap", "Material UI", "HTML", "CSS"] },
+    { category: "Bases de Datos", items: ["PostgreSQL", "MySQL", "SQL Server", "SQLite", "IndexedDB"] },
+    { category: "CI/CD y Calidad", items: ["Jenkins", "SonarQube", "Docker", "Git", "Git Flow"] },
+    { category: "Herramientas", items: ["Swagger", "TCP/Sockets", "OCR (Tesseract)", "Inno Setup", "PM2", "Vercel"] },
   ] as TechCategory[],
 
   en: [
-    { category: "Languages", items: ["JavaScript", "TypeScript", "Dart", "PHP", "C#"] },
-    { category: "Frontend", items: ["React", "Flutter", "Tailwind CSS", "Bootstrap", "Material UI", "HTML", "CSS"] },
-    { category: "Backend", items: ["Node.js", "PHP", ".NET Framework 4.5", "GraphQL", "Tauri"] },
-    { category: "Databases", items: ["MySQL", "SQLite", "IndexedDB", "SQL Server"] },
-    { category: "Tools", items: ["Git", "Docker", "Swagger", "TCP/Sockets", "OCR (Tesseract)", "Inno Setup", "PM2", "Vercel"] },
+    { category: "Languages", items: ["Java", "JavaScript", "TypeScript", "Dart", "PHP", "C#"] },
+    { category: "Backend", items: ["Spring Boot", "Node.js", "PHP", ".NET Framework 4.5", "GraphQL", "REST APIs"] },
+    { category: "Frontend & Mobile", items: ["Angular", "React", "Flutter", "Tauri", "Tailwind CSS", "Bootstrap", "Material UI", "HTML", "CSS"] },
+    { category: "Databases", items: ["PostgreSQL", "MySQL", "SQL Server", "SQLite", "IndexedDB"] },
+    { category: "CI/CD & Quality", items: ["Jenkins", "SonarQube", "Docker", "Git", "Git Flow"] },
+    { category: "Tools", items: ["Swagger", "TCP/Sockets", "OCR (Tesseract)", "Inno Setup", "PM2", "Vercel"] },
   ] as TechCategory[],
 };

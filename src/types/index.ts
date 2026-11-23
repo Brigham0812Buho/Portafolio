@@ -20,6 +20,8 @@ export interface Experience {
   stack: string[];
   type: "empleo" | "freelance";
   url?: string;
+  project?: string;
+  current?: boolean;
 }
 
 export interface Education {
@@ -28,6 +30,8 @@ export interface Education {
   institution: string;
   startDate: string;
   endDate: string;
+  note?: string;
+  current?: boolean;
 }
 
 export interface Certification {

@@ -10,7 +10,7 @@ export function SectionHeader({
   description,
 }: SectionHeaderProps) {
   return (
-    <div className="mb-8 rounded-[24px] border border-[rgba(93,224,255,0.18)] bg-[linear-gradient(135deg,rgba(14,34,64,0.95),rgba(19,47,82,0.98))] p-5 md:p-6 shadow-[0_18px_56px_rgba(2,10,25,0.35)] backdrop-blur-sm">
+    <div className="mb-8 rounded-[24px] border border-[rgba(213,178,124,0.18)] bg-[linear-gradient(135deg,rgba(39,29,21,0.95),rgba(30,23,18,0.98))] p-5 md:p-6 shadow-[0_18px_56px_rgba(8,5,3,0.35)] backdrop-blur-sm">
       <p className="mb-3 font-mono text-xs uppercase tracking-[0.35em] text-accent-secondary">
         {eyebrow}
       </p>

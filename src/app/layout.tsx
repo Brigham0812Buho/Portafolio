@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Gary Chunga — Full Stack Developer",
   description:
-    "Portafolio de Gary Brigham Chunga Castillo, Full Stack Developer especializado en React, TypeScript, Node.js y desarrollo móvil.",
+    "Portafolio de Gary Brigham Chunga Castillo, Full Stack Developer con experiencia en Java, Spring Boot, Angular, React, Node.js, Flutter y sistemas de escritorio.",
   icons: {
     icon: "/favicon.ico",
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { serviceCatalog } from "@/data/serviceCatalog";
 
 type Locale = "es" | "en";
 
@@ -9,6 +10,7 @@ type Translations = {
     home: string;
     experience: string;
     projects: string;
+    services: string;
     contact: string;
     language: string;
     context: string;
@@ -22,12 +24,23 @@ type Translations = {
     mobile: string;
     desktop: string;
     delivery: string;
+    backend: string;
     experience: string;
     englishLevelLabel: string;
     fullStack: string;
+    currentlyLabel: string;
+    backendDescription?: string;
     mobileDescription?: string;
     desktopDescription?: string;
     deliveryDescription?: string;
+  };
+  homeServices: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    viewCatalog: string;
+    requestQuote: string;
+    downloadWord: string;
   };
   projects: {
     eyebrow: string;
@@ -43,6 +56,15 @@ type Translations = {
     employmentLabel: string;
     viewCompanyLabel: string;
     viewSiteLabel: string;
+    currentLabel: string;
+  };
+  skills: {
+    eyebrow: string;
+    title: string;
+    stackTitle: string;
+    educationTitle: string;
+    certificationsTitle: string;
+    inProgressLabel: string;
   };
   contact: {
     talk: string;
@@ -52,14 +74,15 @@ type Translations = {
     freelance: string;
     downloadCV: string;
     fastReply: string;
+    requirementsTitle: string;
+    requirementsDescription: string;
+    requirementsButton: string;
+    downloadCatalog: string;
+    directMessage: string;
+    whatsappIntro: string;
+    freelanceProjectLabel: string;
     services: string;
     serviceCards: Array<{ title: string; desc: string }>;
-    projectField: string;
-    projectTypeLabel: string;
-    projectOptions: string[];
-    placeholder: string;
-    defaultProjectMessage: string;
-    email: string;
     emailCardTitle: string;
     emailCardFooter: string;
     whatsapp: string;
@@ -70,16 +93,9 @@ type Translations = {
     cvCard: string;
     cvFooter: string;
     coverage: string;
-    quoteLabel: string;
-    quoteTitle: string;
-    mailSubjectPrefix: string;
-    mailBodyIntro: string;
-    mailBodyDescriptionLabel: string;
-    mailBodySignOff: string;
-    whatsappTextIntro: string;
-    whatsappTextFooter: string;
     employeeDescription: string;
     freelanceDescription: string;
+    allServices: string;
     viewSiteLabel: string;
   };
 };
@@ -90,13 +106,14 @@ const allTranslations: Record<Locale, Translations> = {
       home: "Inicio",
       experience: "Experiencia",
       projects: "Proyectos",
+      services: "Servicios",
       contact: "Contacto",
       language: "Idioma",
       context: "Contenido en español",
     },
     hero: {
       summary:
-        "Desarrollador Full Stack con experiencia en web, móvil y sistemas empresariales. Participo en proyectos CRM, ERP y monitoreo industrial, cuidando entrega, rendimiento y arquitectura.",
+        "Desarrollador Full Stack con más de tres años y medio de experiencia en sistemas web, móviles y de escritorio para los sectores público y privado: CRM, ERP, contabilidad, monitoreo industrial en tiempo real y modernización de la gestión pública.",
       projects: "Ver proyectos",
       contact: "Contactarme",
       downloadCV: "Descargar CV",
@@ -104,12 +121,23 @@ const allTranslations: Record<Locale, Translations> = {
       mobile: "Móvil",
       desktop: "Escritorio",
       delivery: "Entrega",
-      experience: "+3 años de experiencia",
+      backend: "Backend",
+      experience: "+3.5 años de experiencia",
       englishLevelLabel: "Inglés",
-      fullStack: "Full Stack",
+      fullStack: "Sector público y privado",
+      currentlyLabel: "Actualmente",
+      backendDescription: "Servicios y APIs con Java, Spring Boot, Node.js y GraphQL sobre PostgreSQL y MySQL.",
       mobileDescription: "Apps móviles con UX clara, flujo funcional y rendimiento fluido.",
       desktopDescription: "Sistemas internos y dashboards con supervisión, automatización y control de datos.",
-      deliveryDescription: "Diseño, lógica, despliegue y mantenimiento continuo para web, móvil y escritorio.",
+      deliveryDescription: "Ciclo completo con CI/CD (Jenkins), calidad de código (SonarQube), despliegue y mantenimiento.",
+    },
+    homeServices: {
+      eyebrow: serviceCatalog.es.landing.eyebrow,
+      title: serviceCatalog.es.landing.title,
+      description: serviceCatalog.es.landing.description,
+      viewCatalog: serviceCatalog.es.landing.viewCatalog,
+      requestQuote: serviceCatalog.es.landing.requestQuote,
+      downloadWord: serviceCatalog.es.landing.downloadWord,
     },
     projects: {
       eyebrow: "Proyectos",
@@ -125,6 +153,15 @@ const allTranslations: Record<Locale, Translations> = {
       employmentLabel: "Empleo",
       viewCompanyLabel: "Ver empresa →",
       viewSiteLabel: "Ver sitio →",
+      currentLabel: "Actual",
+    },
+    skills: {
+      eyebrow: "Formación y stack",
+      title: "Tecnologías, estudios y certificaciones",
+      stackTitle: "Stack técnico",
+      educationTitle: "Educación",
+      certificationsTitle: "Certificaciones",
+      inProgressLabel: "En curso",
     },
     contact: {
       talk: "Hablemos",
@@ -136,6 +173,13 @@ const allTranslations: Record<Locale, Translations> = {
       freelance: "Busco freelance",
       downloadCV: "Descargar CV",
       fastReply: "Respuesta rápida",
+      requirementsTitle: "Cuéntame qué necesita tu negocio",
+      requirementsDescription:
+        "El formulario reúne la información del negocio, los módulos y las integraciones para preparar una propuesta ajustada al alcance real.",
+      requirementsButton: "Completar formulario de requisitos",
+      downloadCatalog: "Descargar catálogo de precios (Word)",
+      directMessage: "¿Prefieres conversar primero?",
+      whatsappIntro: "Hola Gary, quisiera conversar sobre un proyecto de software.",
       services: "Servicios",
       serviceCards: [
         {
@@ -155,13 +199,6 @@ const allTranslations: Record<Locale, Translations> = {
           desc: "Catálogo, pagos, pedidos y seguimiento.",
         },
       ],
-      projectField: "Describe tu proyecto",
-      projectTypeLabel: "Tipo de proyecto",
-      projectOptions: ["Landing page", "Aplicación web", "Sistema interno", "E-commerce"],
-      placeholder:
-        "Necesito una landing page con SEO, formulario, integración con WhatsApp y panel administrativo...",
-      defaultProjectMessage: "Necesito una cotización.",
-      email: "Enviar por email",
       emailCardTitle: "Email",
       emailCardFooter: "",
       whatsapp: "WhatsApp",
@@ -172,17 +209,12 @@ const allTranslations: Record<Locale, Translations> = {
       cvCard: "CV",
       cvFooter: "Versión descargable",
       coverage: "Perú en general · remoto / presencial",
-      mailSubjectPrefix: "Cotización ·",
-      mailBodyIntro: "Hola Gary,\n\nQuiero cotizar un proyecto de tipo:",
-      mailBodyDescriptionLabel: "Descripción:",
-      mailBodySignOff: "\n\nSaludos.",
-      whatsappTextIntro: "Hola Gary, quiero cotizar un proyecto de tipo",
-      whatsappTextFooter: ".\n\n",
       employeeDescription:"",
-      freelanceDescription:"",
+      freelanceDescription:
+        "Estos son proyectos que desarrollé para clientes. Viaja Cusco Tours es una landing page turística para presentar tours y facilitar consultas de viajeros.",
+      freelanceProjectLabel: "Proyecto freelance · Landing page turística",
+      allServices: "Ver todos los servicios",
       viewSiteLabel: "Ver sitio →",
-      quoteLabel: "Cotización",
-      quoteTitle: "Solicita tu cotización",
     },
   },
   en: {
@@ -190,13 +222,14 @@ const allTranslations: Record<Locale, Translations> = {
       home: "Home",
       experience: "Experience",
       projects: "Projects",
+      services: "Services",
       contact: "Contact",
       language: "Language",
       context: "Content in English",
     },
     hero: {
       summary:
-        "Full Stack developer with experience in web, mobile and enterprise systems. I work on CRM, ERP and monitoring projects, focusing on delivery, performance and architecture.",
+        "Full Stack Developer with more than three and a half years of experience building web, mobile and desktop systems for the public and private sectors: CRM, ERP, accounting, real-time industrial monitoring and public management modernization.",
       projects: "View projects",
       contact: "Contact me",
       downloadCV: "Download Resume",
@@ -204,12 +237,23 @@ const allTranslations: Record<Locale, Translations> = {
       mobile: "Mobile",
       desktop: "Desktop",
       delivery: "Delivery",
-      experience: "+3 years of experience",
+      backend: "Backend",
+      experience: "3.5+ years of experience",
       englishLevelLabel: "English",
-      fullStack: "Full Stack",
+      fullStack: "Public & private sector",
+      currentlyLabel: "Currently",
+      backendDescription: "Services and APIs with Java, Spring Boot, Node.js and GraphQL on PostgreSQL and MySQL.",
       mobileDescription: "Mobile apps with clear UX and functional flow.",
       desktopDescription: "Internal systems, dashboards and business tools.",
-      deliveryDescription: "Design, business logic, deployment and continuous maintenance across web, mobile and desktop.",
+      deliveryDescription: "Full cycle with CI/CD (Jenkins), code quality (SonarQube), deployment and maintenance.",
+    },
+    homeServices: {
+      eyebrow: serviceCatalog.en.landing.eyebrow,
+      title: serviceCatalog.en.landing.title,
+      description: serviceCatalog.en.landing.description,
+      viewCatalog: serviceCatalog.en.landing.viewCatalog,
+      requestQuote: serviceCatalog.en.landing.requestQuote,
+      downloadWord: serviceCatalog.en.landing.downloadWord,
     },
     projects: {
       eyebrow: "Projects",
@@ -225,6 +269,15 @@ const allTranslations: Record<Locale, Translations> = {
       employmentLabel: "Employment",
       viewCompanyLabel: "View company →",
       viewSiteLabel: "View site →",
+      currentLabel: "Current",
+    },
+    skills: {
+      eyebrow: "Background & stack",
+      title: "Technologies, education and certifications",
+      stackTitle: "Tech stack",
+      educationTitle: "Education",
+      certificationsTitle: "Certifications",
+      inProgressLabel: "In progress",
     },
     contact: {
       talk: "Let’s talk",
@@ -235,6 +288,13 @@ const allTranslations: Record<Locale, Translations> = {
       freelance: "I’m looking for a freelancer",
       downloadCV: "Download Resume",
       fastReply: "Quick reply",
+      requirementsTitle: "Tell me what your business needs",
+      requirementsDescription:
+        "The form gathers business details, modules and integrations so I can prepare a proposal based on the actual scope.",
+      requirementsButton: "Complete the requirements form",
+      downloadCatalog: "Download price catalog (Word)",
+      directMessage: "Would you rather talk first?",
+      whatsappIntro: "Hi Gary, I’d like to discuss a software project.",
       services: "Services",
       serviceCards: [
         {
@@ -254,13 +314,6 @@ const allTranslations: Record<Locale, Translations> = {
           desc: "Catalog, payments, orders and tracking.",
         },
       ],
-      projectField: "Describe your project",
-      projectTypeLabel: "Project type",
-      projectOptions: ["Landing page", "Web app", "Internal system", "E-commerce"],
-      placeholder:
-        "I need a landing page with SEO, form, WhatsApp integration and admin panel...",
-      defaultProjectMessage: "I need a quote.",
-      email: "Send by email",
       emailCardTitle: "Email",
       emailCardFooter: "",
       whatsapp: "WhatsApp",
@@ -271,17 +324,12 @@ const allTranslations: Record<Locale, Translations> = {
       cvCard: "CV",
       cvFooter: "Downloadable version",
       coverage: "Peru in general · remote / onsite",
-      mailSubjectPrefix: "Quote ·",
-      mailBodyIntro: "Hello Gary,\n\nI would like to request a quote for a project type:",
-      mailBodyDescriptionLabel: "Description:",
-      mailBodySignOff: "\n\nRegards.",
-      whatsappTextIntro: "Hello Gary, I would like a quote for a project type",
-      whatsappTextFooter: ".\n\n",
       employeeDescription:"",
-      freelanceDescription:"",
+      freelanceDescription:
+        "These are projects I built for clients. Viaja Cusco Tours is a tourism landing page showcasing tours and helping travelers get in touch.",
+      freelanceProjectLabel: "Freelance project · Tourism landing page",
+      allServices: "View all services",
       viewSiteLabel: "View site →",
-      quoteLabel: "Quote",
-      quoteTitle: "Request your quote",
     },
   },
 };

@@ -1,7 +1,37 @@
 import { Experience } from "@/types";
 
+// Ordenado del más reciente al más antiguo (mismo orden que el CV).
 export const experiences = {
   es: [
+    {
+      id: "gore-cusco",
+      company: "Gobierno Regional del Cusco",
+      role: "Desarrollador Backend",
+      project: "Proyecto de modernización de la gestión pública",
+      startDate: "Octubre 2026",
+      endDate: "Diciembre 2026",
+      current: true,
+      type: "empleo",
+      description: [
+        "Desarrollé servicios y lógica de negocio con Java y Spring Boot sobre PostgreSQL, e interfaces con Angular, para sistemas que digitalizan y optimizan procesos administrativos de la institución.",
+        "Automaticé la integración y el despliegue continuo (CI/CD) con Jenkins y aseguré la calidad del código con SonarQube, bajo metodologías ágiles.",
+      ],
+      url: "https://www.regioncusco.gob.pe/",
+      stack: ["Java", "Spring Boot", "PostgreSQL", "Angular", "Jenkins", "SonarQube"],
+    },
+    {
+      id: "viaja-cusco-tours",
+      company: "Viaja Cusco Tours",
+      role: "Desarrollador Web (Freelance)",
+      startDate: "Mayo 2026",
+      endDate: "Octubre 2026",
+      type: "freelance",
+      url: "https://www.viajacuscotours.com",
+      description: [
+        "Diseñé, desarrollé y desplegué en Vercel la landing page turística de la empresa con Tailwind CSS, optimizada para SEO.",
+      ],
+      stack: ["Tailwind CSS", "Vercel", "SEO"],
+    },
     {
       id: "fireno",
       company: "Fireno S.A.C.",
@@ -10,8 +40,9 @@ export const experiences = {
       endDate: "Mayo 2026",
       type: "empleo",
       description: [
-        "Desarrollo de un sistema de monitoreo en tiempo real de paneles contra incendios: aplicación de escritorio con Tauri y React, comunicación TCP, decodificación de mensajes, base de datos SQLite, instalador con Inno Setup orquestando subsistemas mediante PM2 y configuración XML, y sistema de envío de logs de error.",
-        "Desarrollo de aplicaciones web con PHP, React, Bootstrap y CSS para gestión de recursos contra incendios y administración de accesos, con MySQL e IndexedDB. Generación automática de certificados de mantenimiento en PDF e integración de OCR para extracción de datos en un sistema de gastos.",
+        "Desarrollé una aplicación de escritorio con Tauri y React para monitorear en tiempo real paneles contra incendios: decodificación de mensajes por TCP, almacenamiento en SQLite, envío automático de logs de error e instalador con Inno Setup que levanta los subsistemas mediante PM2 y configuración XML.",
+        "Desarrollé aplicaciones web con PHP, React y Bootstrap para gestionar recursos contra incendios y controlar accesos, con MySQL e IndexedDB para el almacenamiento local.",
+        "Automaticé la generación de certificados de mantenimiento en PDF e integré OCR para extraer datos de imágenes y documentos en un sistema de control de gastos.",
       ],
       url: "https://www.fireno.com/",
       stack: ["Tauri", "React", "PHP", "Bootstrap", "MySQL", "SQLite", "IndexedDB", "PM2", "OCR"],
@@ -25,28 +56,44 @@ export const experiences = {
       endDate: "Diciembre 2025",
       type: "empleo",
       description: [
-        "Desarrollo FrontEnd con React y Material UI para sistemas CRM y ERP, e implementación de API GraphQL.",
-        "Migración de código hacia patrón de componentes y arquitectura limpia, desarrollo de stored procedures complejos en MySQL para lógica contable, y sistema de actualización/monitoreo de base de datos con .NET 4.5.",
-        "Aplicación móvil con Flutter para facturación electrónica: diseño de base de datos, BackEnd con APIs REST en Node.js documentadas con Swagger, IndexedDB para catálogos, y publicación en Play Store.",
+        "Desarrollé el frontend de sistemas CRM y ERP con React y Material UI, implementé APIs con GraphQL y participé en la migración hacia una arquitectura limpia basada en componentes.",
+        "Desarrollé procedimientos almacenados complejos en MySQL para la lógica contable y un sistema de actualización y monitoreo de bases de datos con .NET Framework 4.5, distribuido con Inno Setup.",
+        "Desarrollé de principio a fin una aplicación móvil de facturación electrónica con Flutter: diseño de la base de datos, APIs REST con Node.js documentadas en Swagger, catálogos con IndexedDB, y firma y publicación en Google Play.",
       ],
       stack: ["React", "Material UI", "GraphQL", "MySQL", ".NET 4.5", "Flutter", "Node.js", "Swagger"],
-    },
-    {
-      id: "viaja-cusco-tours",
-      company: "Viaja Cusco Tours",
-      role: "Desarrollador Freelance",
-      startDate: "2026",
-      endDate: "2026",
-      type: "freelance",
-      url: "https://www.viajacuscotours.com",
-      description: [
-        "Desarrollo integral de una landing page turística con Tailwind CSS: diseño, implementación y despliegue en Vercel, incluyendo optimización SEO para mejorar visibilidad y posicionamiento en motores de búsqueda.",
-      ],
-      stack: ["Tailwind CSS", "Vercel", "SEO"],
     },
   ] as Experience[],
 
   en: [
+    {
+      id: "gore-cusco",
+      company: "Regional Government of Cusco",
+      role: "Backend Developer",
+      project: "Public management modernization project",
+      startDate: "October 2026",
+      endDate: "December 2026",
+      current: true,
+      type: "empleo",
+      description: [
+        "Built services and business logic with Java and Spring Boot on PostgreSQL, plus Angular interfaces, for systems that digitize and streamline the institution's administrative processes.",
+        "Automated continuous integration and deployment (CI/CD) with Jenkins and ensured code quality with SonarQube, following agile methodologies.",
+      ],
+      url: "https://www.regioncusco.gob.pe/",
+      stack: ["Java", "Spring Boot", "PostgreSQL", "Angular", "Jenkins", "SonarQube"],
+    },
+    {
+      id: "viaja-cusco-tours",
+      company: "Viaja Cusco Tours",
+      role: "Web Developer (Freelance)",
+      startDate: "May 2026",
+      endDate: "October 2026",
+      type: "freelance",
+      url: "https://www.viajacuscotours.com",
+      description: [
+        "Designed, built and deployed the company's SEO-optimized tourism landing page with Tailwind CSS on Vercel.",
+      ],
+      stack: ["Tailwind CSS", "Vercel", "SEO"],
+    },
     {
       id: "fireno",
       company: "Fireno S.A.C.",
@@ -55,8 +102,9 @@ export const experiences = {
       endDate: "May 2026",
       type: "empleo",
       description: [
-        "Developed a real-time monitoring system for fire control panels: desktop app using Tauri and React, TCP communication, message decoding, SQLite database, installer with Inno Setup orchestrating subsystems via PM2 and XML configuration, and an error log shipping system.",
-        "Built web applications with PHP, React, Bootstrap and CSS for firefighting resource management and access control, using MySQL and IndexedDB. Implemented automatic PDF maintenance certificate generation and integrated OCR for data extraction in an expense system.",
+        "Built a Tauri + React desktop app for real-time monitoring of fire alarm panels: TCP message decoding, SQLite storage, automatic error-log shipping and an Inno Setup installer that brings up the subsystems via PM2 and XML configuration.",
+        "Built web applications with PHP, React and Bootstrap to manage firefighting resources and access control, using MySQL and IndexedDB for local storage.",
+        "Automated PDF maintenance certificate generation and integrated OCR to extract data from images and documents in an expense control system.",
       ],
       url: "https://www.fireno.com/",
       stack: ["Tauri", "React", "PHP", "Bootstrap", "MySQL", "SQLite", "IndexedDB", "PM2", "OCR"],
@@ -70,24 +118,11 @@ export const experiences = {
       endDate: "December 2025",
       type: "empleo",
       description: [
-        "Frontend development with React and Material UI for CRM and ERP systems, and GraphQL API implementation.",
-        "Refactored code toward component patterns and clean architecture, developed complex stored procedures in MySQL for accounting logic, and implemented a DB update/monitoring system using .NET 4.5.",
-        "Mobile app with Flutter for electronic invoicing: DB design, backend REST APIs in Node.js documented with Swagger, IndexedDB for catalogs, and Play Store publishing.",
+        "Built the frontend of CRM and ERP systems with React and Material UI, implemented GraphQL APIs and took part in migrating to a component-based clean architecture.",
+        "Wrote complex MySQL stored procedures for accounting logic and a database update/monitoring system with .NET Framework 4.5, distributed with Inno Setup.",
+        "Built an electronic invoicing mobile app end to end with Flutter: database design, Node.js REST APIs documented with Swagger, IndexedDB catalogs, and signing and publishing on Google Play.",
       ],
       stack: ["React", "Material UI", "GraphQL", "MySQL", ".NET 4.5", "Flutter", "Node.js", "Swagger"],
-    },
-    {
-      id: "viaja-cusco-tours",
-      company: "Viaja Cusco Tours",
-      role: "Freelance Developer",
-      startDate: "2026",
-      endDate: "2026",
-      type: "freelance",
-      url: "https://www.viajacuscotours.com",
-      description: [
-        "End-to-end development of a tourism landing page with Tailwind CSS: design, implementation and deployment on Vercel, including SEO optimization to improve visibility and search rankings.",
-      ],
-      stack: ["Tailwind CSS", "Vercel", "SEO"],
     },
   ] as Experience[],
 };

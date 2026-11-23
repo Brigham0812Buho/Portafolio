@@ -6,7 +6,7 @@ import type { Experience } from "@/types";
 export function ExperienceHighlights({ experiences }: { experiences: Experience[] }) {
   return (
     <section className="px-6 md:px-16 max-w-6xl mx-auto py-8 md:py-12">
-      <div className="mb-6 rounded-[24px] border border-[rgba(0,242,195,0.18)] bg-[linear-gradient(135deg,rgba(93,224,255,0.14),rgba(0,242,195,0.1))] p-5 md:p-6 shadow-[0_18px_60px_rgba(3,10,25,0.25)] backdrop-blur-sm">
+      <div className="mb-6 rounded-[24px] border border-[rgba(213,178,124,0.2)] bg-[linear-gradient(135deg,rgba(183,123,76,0.16),rgba(213,178,124,0.1))] p-5 md:p-6 shadow-[0_18px_60px_rgba(8,5,3,0.25)] backdrop-blur-sm">
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.35em] text-accent-secondary">Resumen por empresa</p>
         <h2 className="text-2xl md:text-3xl font-bold text-foreground">
           Una mirada más directa a cada etapa
@@ -21,7 +21,7 @@ export function ExperienceHighlights({ experiences }: { experiences: Experience[
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.35, delay: index * 0.08 }}
-            className="card-3d rounded-[24px] border border-[rgba(93,224,255,0.14)] bg-[linear-gradient(135deg,rgba(12,27,54,0.95),rgba(16,35,68,0.99))] p-5 shadow-[0_18px_46px_rgba(2,10,24,0.45)]"
+            className="card-3d rounded-[24px] border border-[rgba(213,178,124,0.16)] bg-[linear-gradient(135deg,rgba(38,29,21,0.95),rgba(30,23,18,0.99))] p-5 shadow-[0_18px_46px_rgba(8,5,3,0.42)]"
           >
             <div className="mb-4 flex items-center justify-between gap-3">
               <span className="rounded-full bg-accent-secondary/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-secondary">

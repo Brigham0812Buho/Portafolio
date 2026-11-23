@@ -15,7 +15,7 @@ export function Logo({ size = 40, className = "" }: { size?: number; className?:
         width="88"
         height="88"
         rx="24"
-        fill="rgba(7,16,31,0.92)"
+        fill="rgba(23,18,14,0.92)"
         stroke="var(--color-accent)"
         strokeWidth="3"
       />

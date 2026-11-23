@@ -21,7 +21,7 @@ export function ProjectsGrid() {
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map(({ id, title, description, stack, repoUrl, demoUrl }: Project, index: number) => (
           <Animated key={id} className="card-3d card-hover">
-            <div className="h-full rounded-[24px] border border-[rgba(93,224,255,0.18)] bg-[linear-gradient(135deg,rgba(12,27,56,0.96),rgba(18,38,74,0.99))] p-6 shadow-[0_18px_48px_rgba(4,12,28,0.42)]">
+            <div className="h-full rounded-[24px] border border-[rgba(213,178,124,0.18)] bg-[linear-gradient(135deg,rgba(39,29,21,0.96),rgba(30,23,18,0.99))] p-6 shadow-[0_18px_48px_rgba(8,5,3,0.42)]">
               <div className="mb-4 flex items-center justify-between gap-3">
                 <Badge variant="soft">{translations.projects.caseLabel} {index + 1}</Badge>
                 <Badge>{stack.length} {translations.projects.technologiesLabel}</Badge>

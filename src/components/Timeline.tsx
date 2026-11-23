@@ -6,14 +6,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Timeline() {
   const { locale, translations } = useLanguage();
+  // Los datos ya vienen ordenados del más reciente al más antiguo.
+  const items = experiences[locale];
 
-  const localized = [...experiences[locale]];
-  const orderedExperiences = localized.sort((a, b) => {
-    const yearA = Number(a.startDate.match(/(\d{4})/)?.[1] ?? 0);
-    const yearB = Number(b.startDate.match(/(\d{4})/)?.[1] ?? 0);
-
-    return yearA - yearB;
-  });
   return (
     <section id="experiencia" className="px-4 md:px-8 max-w-[1400px] mx-auto py-8 md:py-12">
       <SectionHeader
@@ -21,11 +16,16 @@ export function Timeline() {
         title={translations.timeline.title}
       />
 
-      <div className="grid gap-4 lg:grid-cols-3">
-        {orderedExperiences.map((exp, idx) => (
-          <TimelineItem key={exp.id} exp={exp} index={idx} />
+      <ol className="mx-auto max-w-5xl">
+        {items.map((exp, idx) => (
+          <TimelineItem
+            key={exp.id}
+            exp={exp}
+            index={idx}
+            isLast={idx === items.length - 1}
+          />
         ))}
-      </div>
+      </ol>
     </section>
   );
 }

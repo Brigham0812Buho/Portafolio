@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowRight, FiDownload, FiMapPin } from "react-icons/fi";
+import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMapPin } from "react-icons/fi";
 import { personalInfo } from "@/data/personalInfo";
+import { experiences } from "@/data/experience";
 import { Animated } from "@/components/Animated";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { FeatureCard } from "@/components/ui/FeatureCard";
@@ -10,7 +11,8 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 export function Hero() {
   const { translations, locale } = useLanguage();
-  const { name, role, location, englishLevel } = personalInfo[locale];
+  const { name, role, location, englishLevel, github, linkedin } = personalInfo[locale];
+  const currentJob = experiences[locale].find((exp) => exp.current);
   const {
     summary,
     projects,
@@ -20,9 +22,12 @@ export function Hero() {
     mobile,
     desktop,
     delivery,
+    backend,
     experience,
     englishLevelLabel,
     fullStack,
+    currentlyLabel,
+    backendDescription = "",
     mobileDescription = "",
     desktopDescription = "",
     deliveryDescription = "",
@@ -57,6 +62,19 @@ export function Hero() {
               </Animated>
             </div>
           </div>
+
+          {currentJob && (
+            <Animated>
+              <p className="mb-3 inline-flex flex-wrap items-center gap-2 rounded-full border border-accent-secondary/30 bg-accent-secondary/10 px-3 py-1.5 text-xs text-foreground">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                <span className="font-semibold text-accent-secondary">{currentlyLabel}:</span>
+                {currentJob.role} · {currentJob.company}
+              </p>
+            </Animated>
+          )}
 
           <Animated>
             <h1 className="text-3xl md:text-5xl font-bold mb-2 text-foreground leading-tight">
@@ -109,12 +127,33 @@ export function Hero() {
               <a
                 href={`/assets/perfil/${locale === "en" ? "resume.pdf" : "cv.pdf"}`}
                 download={locale === "en" ? "resume-gary-chunga.pdf" : "cv-gary-chunga.pdf"}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-[rgba(93,224,255,0.22)] bg-[rgba(255,255,255,0.05)] text-foreground hover:border-accent-secondary transition font-medium text-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-[rgba(213,178,124,0.22)] bg-[rgba(243,234,223,0.05)] text-foreground hover:border-accent-secondary transition font-medium text-sm"
               >
                 {downloadCV}
                 <FiDownload />
               </a>
             </Animated>
+
+            <div className="flex items-center gap-2">
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(213,178,124,0.22)] text-muted transition hover:border-accent-secondary hover:text-accent-secondary"
+              >
+                <FiLinkedin />
+              </a>
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(213,178,124,0.22)] text-muted transition hover:border-accent-secondary hover:text-accent-secondary"
+              >
+                <FiGithub />
+              </a>
+            </div>
           </div>
         </GlassCard>
 
@@ -123,13 +162,10 @@ export function Hero() {
             {focus}
           </p>
           <div className="grid gap-3 sm:grid-cols-2 auto-rows-fr">
+            <FeatureCard title={backend} description={backendDescription} />
             <FeatureCard title={mobile} description={mobileDescription} />
             <FeatureCard title={desktop} description={desktopDescription} />
-            <FeatureCard
-              title={delivery}
-              description={deliveryDescription}
-              span
-            />
+            <FeatureCard title={delivery} description={deliveryDescription} />
           </div>
         </GlassCard>
       </div>
