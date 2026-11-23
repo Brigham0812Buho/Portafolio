@@ -16,12 +16,12 @@ type PricedService = (typeof serviceCatalog)["es"]["services"][number];
 
 function PriceCard({ service }: { service: PricedService }) {
   return (
-    <article className="rounded-[22px] border border-[rgba(213,178,124,0.18)] bg-[linear-gradient(135deg,rgba(40,29,21,0.95),rgba(31,24,19,0.98))] p-5 shadow-[0_16px_40px_rgba(8,5,3,0.28)]">
-      <h3 className="text-lg font-semibold text-foreground">{service.name}</h3>
-      <p className="mt-3 text-xl font-bold text-accent-secondary">{service.price}</p>
-      <p className="mt-3 text-sm leading-6 text-muted">{service.description}</p>
+    <article className="card flex h-full flex-col p-6">
+      <h3 className="font-semibold text-foreground">{service.name}</h3>
+      <p className="mt-1 text-2xl font-semibold tracking-tight text-accent">{service.price}</p>
+      <p className="mb-5 mt-4 text-sm leading-relaxed text-muted">{service.description}</p>
       {service.details && (
-        <p className="mt-3 border-t border-border pt-3 text-xs leading-5 text-muted">
+        <p className="mt-auto border-t border-border pt-4 text-xs leading-5 text-subtle">
           {service.details}
         </p>
       )}
@@ -52,14 +52,14 @@ function CheckboxGroup({
         {options.map((option) => (
           <label
             key={option}
-            className="flex cursor-pointer items-start gap-2 rounded-xl border border-border bg-background/70 p-3 text-sm text-muted transition hover:border-accent-secondary"
+            className="flex cursor-pointer items-start gap-2.5 rounded-lg border border-border bg-background p-3 text-sm text-muted transition hover:border-border-strong has-[:checked]:border-accent/50 has-[:checked]:text-foreground"
           >
             <input
               type="checkbox"
               name={name}
               value={option}
               onChange={(event) => onChange?.(option, event.target.checked)}
-              className="mt-1 accent-accent-secondary"
+              className="mt-0.5 accent-[var(--accent)]"
             />
             <span>{option}</span>
           </label>
@@ -163,23 +163,23 @@ export function ServicesCatalog() {
 
   return (
     <main className="services-page">
-      <section className="services-printable mx-auto max-w-[1200px] px-4 pb-14 pt-12 md:px-8 md:pt-20">
-        <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <section className="services-printable page-container pb-20 pt-14 md:pb-28 md:pt-24">
+        <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-secondary">
+            <p className="eyebrow mb-3">
               {copy.eyebrow}
             </p>
-            <h1 className="text-3xl font-bold leading-tight text-foreground md:text-5xl">
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl">
               {copy.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted md:text-base">
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
               {copy.description}
             </p>
           </div>
           <div className="catalog-actions flex flex-wrap gap-3">
             <a
               href="#requisitos"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-accent-secondary px-5 py-3 text-sm font-semibold text-background transition hover:opacity-90"
+              className="btn btn-primary"
             >
               {copy.requestQuote}
               <FiArrowRight aria-hidden="true" />
@@ -187,7 +187,7 @@ export function ServicesCatalog() {
             <a
               href={quotationDocumentUrl}
               download
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-accent-secondary px-5 py-3 text-sm font-semibold text-accent-secondary transition hover:bg-accent-secondary hover:text-background"
+              className="btn btn-secondary"
             >
               <FiDownload aria-hidden="true" />
               {copy.download}
@@ -195,8 +195,8 @@ export function ServicesCatalog() {
           </div>
         </div>
 
-        <section className="mb-10">
-          <h2 className="mb-4 text-2xl font-semibold text-foreground">{copy.webTitle}</h2>
+        <section className="mb-14">
+          <h2 className="mb-5 text-2xl font-semibold tracking-tight text-foreground">{copy.webTitle}</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {copy.services.map((service) => (
               <PriceCard key={service.name} service={service} />
@@ -204,8 +204,8 @@ export function ServicesCatalog() {
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="mb-4 text-2xl font-semibold text-foreground">{copy.customTitle}</h2>
+        <section className="mb-14">
+          <h2 className="mb-5 text-2xl font-semibold tracking-tight text-foreground">{copy.customTitle}</h2>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {copy.customServices.map((service) => (
               <PriceCard key={service.name} service={service} />
@@ -214,8 +214,8 @@ export function ServicesCatalog() {
         </section>
 
         <section>
-          <div className="mb-4">
-            <h2 className="text-2xl font-semibold text-foreground">{copy.extrasTitle}</h2>
+          <div className="mb-5">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">{copy.extrasTitle}</h2>
             <p className="mt-2 text-sm text-muted">{copy.extrasDescription}</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -225,17 +225,17 @@ export function ServicesCatalog() {
           </div>
         </section>
 
-        <p className="mt-8 rounded-xl border border-border bg-background/70 p-4 text-sm leading-6 text-muted">
+        <p className="card mt-10 p-5 text-sm leading-6 text-muted">
           {copy.priceNote}
         </p>
-        <div className="mt-6 grid gap-2 border-t border-border pt-5 text-sm text-muted sm:grid-cols-2">
+        <div className="mt-8 grid gap-2 border-t border-border pt-6 text-sm text-muted sm:grid-cols-2">
           <p className="font-semibold text-foreground">{copy.developer.name}</p>
           <p>{copy.developer.specialty}</p>
           <p>RUC: {copy.developer.taxId}</p>
           <p>WhatsApp: {copy.developer.phone}</p>
           <a
             href={`mailto:${copy.developer.email}`}
-            className="text-accent-secondary underline underline-offset-4"
+            className="text-accent underline-offset-4 hover:underline"
           >
             {copy.developer.email}
           </a>
@@ -250,17 +250,17 @@ export function ServicesCatalog() {
         onClick={(event) => {
           if (event.target === event.currentTarget) closeRequirements();
         }}
-        className="services-form m-auto max-h-[92vh] w-[calc(100%-2rem)] max-w-4xl overflow-y-auto rounded-[24px] border border-border bg-background p-0 text-foreground shadow-[0_28px_90px_rgba(8,5,3,0.7)] backdrop:bg-black/75"
+        className="services-form m-auto max-h-[92vh] w-[calc(100%-2rem)] max-w-4xl overflow-y-auto rounded-2xl border border-border-strong bg-surface p-0 text-foreground shadow-2xl backdrop:bg-black/70 backdrop:backdrop-blur-sm"
       >
         <div className="border-b border-border p-5 md:p-7">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-accent-secondary">
+              <p className="eyebrow mb-2">
                 {form.eyebrow}
               </p>
               <h2
                 id="requirements-title"
-                className="text-2xl font-bold text-foreground md:text-3xl"
+                className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl"
               >
                 {form.title}
               </h2>
@@ -272,7 +272,7 @@ export function ServicesCatalog() {
               type="button"
               onClick={closeRequirements}
               aria-label={locale === "es" ? "Cerrar formulario" : "Close form"}
-              className="rounded-full border border-border p-2 text-muted transition hover:border-accent-secondary hover:text-accent-secondary"
+              className="icon-btn h-9 w-9 shrink-0"
             >
               <FiX aria-hidden="true" />
             </button>
@@ -280,7 +280,7 @@ export function ServicesCatalog() {
         </div>
         <form
           onSubmit={sendRequirements}
-          className="space-y-7 bg-[linear-gradient(135deg,rgba(37,27,19,0.94),rgba(31,24,19,0.98))] p-5 md:p-7"
+          className="space-y-7 p-5 md:p-7"
         >
           <div className="grid gap-4 md:grid-cols-2">
             {[
@@ -299,7 +299,7 @@ export function ServicesCatalog() {
                   type={type}
                   min={min}
                   required={required}
-                  className="w-full rounded-xl border border-border bg-background/90 px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent-secondary"
+                  className="field"
                 />
               </label>
             ))}
@@ -308,7 +308,7 @@ export function ServicesCatalog() {
               <input
                 name="roles"
                 type="text"
-                className="w-full rounded-xl border border-border bg-background/90 px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent-secondary"
+                className="field"
               />
             </label>
           </div>
@@ -325,7 +325,7 @@ export function ServicesCatalog() {
               <input
                 name="otherObjective"
                 type="text"
-                className="w-full rounded-xl border border-border bg-background/90 px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent-secondary"
+                className="field"
               />
             </label>
           )}
@@ -348,7 +348,7 @@ export function ServicesCatalog() {
               <select
                 name="migration"
                 defaultValue=""
-                className="w-full rounded-xl border border-border bg-background/90 px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent-secondary"
+                className="field"
               >
                 <option value="" disabled>
                   —
@@ -365,7 +365,7 @@ export function ServicesCatalog() {
               <select
                 name="hosting"
                 defaultValue=""
-                className="w-full rounded-xl border border-border bg-background/90 px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent-secondary"
+                className="field"
               >
                 <option value="" disabled>
                   —
@@ -385,7 +385,7 @@ export function ServicesCatalog() {
               name="comments"
               rows={4}
               placeholder={form.commentsPlaceholder}
-              className="w-full rounded-xl border border-border bg-background/90 px-3 py-3 text-sm text-foreground outline-none focus:border-accent-secondary"
+              className="field"
             />
           </label>
 
@@ -393,7 +393,7 @@ export function ServicesCatalog() {
             <p className="text-xs text-muted">{form.required}</p>
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-secondary px-5 py-3 text-sm font-semibold text-background transition hover:opacity-90"
+              className="btn btn-primary"
             >
               <FiMessageCircle aria-hidden="true" />
               {form.submit}

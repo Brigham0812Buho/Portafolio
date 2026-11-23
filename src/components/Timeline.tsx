@@ -10,22 +10,20 @@ export function Timeline() {
   const items = experiences[locale];
 
   return (
-    <section id="experiencia" className="px-4 md:px-8 max-w-[1400px] mx-auto py-8 md:py-12">
-      <SectionHeader
-        eyebrow={translations.timeline.eyebrow}
-        title={translations.timeline.title}
-      />
+    <section id="experiencia" className="border-t border-border py-20 md:py-28">
+      <div className="page-container">
+        <SectionHeader
+          eyebrow={translations.timeline.eyebrow}
+          title={translations.timeline.title}
+          description={translations.timeline.description}
+        />
 
-      <ol className="mx-auto max-w-5xl">
-        {items.map((exp, idx) => (
-          <TimelineItem
-            key={exp.id}
-            exp={exp}
-            index={idx}
-            isLast={idx === items.length - 1}
-          />
-        ))}
-      </ol>
+        <ol>
+          {items.map((exp, idx) => (
+            <TimelineItem key={exp.id} exp={exp} index={idx} isLast={idx === items.length - 1} />
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }

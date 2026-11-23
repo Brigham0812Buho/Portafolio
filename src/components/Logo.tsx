@@ -1,61 +1,24 @@
-export function Logo({ size = 40, className = "" }: { size?: number; className?: string }) {
+export function Logo({ size = 32, className = "" }: { size?: number; className?: string }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 100 100"
+      viewBox="0 0 40 40"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="GC"
       className={className}
     >
-      <rect
-        x="6"
-        y="6"
-        width="88"
-        height="88"
-        rx="24"
-        fill="rgba(23,18,14,0.92)"
-        stroke="var(--color-accent)"
-        strokeWidth="3"
-      />
-      <path
-        d="M30 30h22c10 0 18 8 18 18s-8 18-18 18H30"
-        fill="none"
-        stroke="var(--color-accent-secondary)"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M30 66h24"
-        fill="none"
-        stroke="var(--color-accent-secondary)"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M63 33l11 0"
-        stroke="var(--color-accent)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M63 67l11 0"
-        stroke="var(--color-accent)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <circle cx="73" cy="50" r="4" fill="var(--color-accent)" />
+      <rect x="0.5" y="0.5" width="39" height="39" rx="10" fill="var(--color-surface-2)" stroke="var(--color-border-strong)" />
       <text
-        x="50"
-        y="58"
+        x="20"
+        y="25.5"
         textAnchor="middle"
-        fontFamily="Inter, Arial, sans-serif"
+        fontFamily="var(--font-geist-sans), system-ui, sans-serif"
         fontWeight="700"
-        fontSize="26"
+        fontSize="15"
+        letterSpacing="-0.5"
         fill="var(--color-accent)"
-        letterSpacing="-1"
       >
         GC
       </text>

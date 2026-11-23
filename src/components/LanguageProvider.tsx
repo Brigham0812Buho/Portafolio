@@ -12,27 +12,30 @@ type Translations = {
     projects: string;
     services: string;
     contact: string;
-    language: string;
-    context: string;
+    menu: string;
   };
   hero: {
+    headline: string;
     summary: string;
     projects: string;
     contact: string;
     downloadCV: string;
+    currentlyLabel: string;
+    locationLabel: string;
+    experienceLabel: string;
+    experienceValue: string;
+    englishLevelLabel: string;
+    modeLabel: string;
+    modeValue: string;
     focus: string;
+    backend: string;
     mobile: string;
     desktop: string;
     delivery: string;
-    backend: string;
-    experience: string;
-    englishLevelLabel: string;
-    fullStack: string;
-    currentlyLabel: string;
-    backendDescription?: string;
-    mobileDescription?: string;
-    desktopDescription?: string;
-    deliveryDescription?: string;
+    backendDescription: string;
+    mobileDescription: string;
+    desktopDescription: string;
+    deliveryDescription: string;
   };
   homeServices: {
     eyebrow: string;
@@ -45,23 +48,19 @@ type Translations = {
   projects: {
     eyebrow: string;
     title: string;
-    caseLabel: string;
+    description: string;
     viewSiteLabel: string;
-    technologiesLabel: string;
   };
   timeline: {
     eyebrow: string;
     title: string;
+    description: string;
     freelanceLabel: string;
-    employmentLabel: string;
-    viewCompanyLabel: string;
-    viewSiteLabel: string;
     currentLabel: string;
   };
   skills: {
     eyebrow: string;
     title: string;
-    stackTitle: string;
     educationTitle: string;
     certificationsTitle: string;
     inProgressLabel: string;
@@ -72,6 +71,9 @@ type Translations = {
     projectDescription: string;
     employee: string;
     freelance: string;
+    employeeTitle: string;
+    employeeDescription: string;
+    emailMe: string;
     downloadCV: string;
     fastReply: string;
     requirementsTitle: string;
@@ -80,23 +82,18 @@ type Translations = {
     downloadCatalog: string;
     directMessage: string;
     whatsappIntro: string;
-    freelanceProjectLabel: string;
-    services: string;
-    serviceCards: Array<{ title: string; desc: string }>;
     emailCardTitle: string;
-    emailCardFooter: string;
     whatsapp: string;
     githubCard: string;
     githubFooter: string;
     linkedinCard: string;
     linkedinFooter: string;
-    cvCard: string;
-    cvFooter: string;
     coverage: string;
-    employeeDescription: string;
-    freelanceDescription: string;
     allServices: string;
-    viewSiteLabel: string;
+  };
+  footer: {
+    rights: string;
+    backToTop: string;
   };
 };
 
@@ -108,28 +105,31 @@ const allTranslations: Record<Locale, Translations> = {
       projects: "Proyectos",
       services: "Servicios",
       contact: "Contacto",
-      language: "Idioma",
-      context: "Contenido en español",
+      menu: "Abrir menú",
     },
     hero: {
+      headline: "Sistemas web, móviles y de escritorio",
       summary:
-        "Desarrollador Full Stack con más de tres años y medio de experiencia en sistemas web, móviles y de escritorio para los sectores público y privado: CRM, ERP, contabilidad, monitoreo industrial en tiempo real y modernización de la gestión pública.",
+        "Más de tres años y medio construyendo CRM, ERP, plataformas contables, monitoreo industrial en tiempo real y sistemas para la modernización de la gestión pública, asumiendo el ciclo completo: base de datos, lógica de negocio, despliegue y mantenimiento.",
       projects: "Ver proyectos",
       contact: "Contactarme",
       downloadCV: "Descargar CV",
-      focus: "Enfoque",
-      mobile: "Móvil",
-      desktop: "Escritorio",
-      delivery: "Entrega",
-      backend: "Backend",
-      experience: "+3.5 años de experiencia",
-      englishLevelLabel: "Inglés",
-      fullStack: "Sector público y privado",
       currentlyLabel: "Actualmente",
+      locationLabel: "Ubicación",
+      experienceLabel: "Experiencia",
+      experienceValue: "+3.5 años",
+      englishLevelLabel: "Inglés",
+      modeLabel: "Modalidad",
+      modeValue: "Remoto / presencial",
+      focus: "En qué me especializo",
+      backend: "Backend y APIs",
+      mobile: "Aplicaciones móviles",
+      desktop: "Software de escritorio",
+      delivery: "Entrega continua",
       backendDescription: "Servicios y APIs con Java, Spring Boot, Node.js y GraphQL sobre PostgreSQL y MySQL.",
-      mobileDescription: "Apps móviles con UX clara, flujo funcional y rendimiento fluido.",
-      desktopDescription: "Sistemas internos y dashboards con supervisión, automatización y control de datos.",
-      deliveryDescription: "Ciclo completo con CI/CD (Jenkins), calidad de código (SonarQube), despliegue y mantenimiento.",
+      mobileDescription: "Apps en Flutter publicadas en Google Play, con UX clara y funcionamiento offline.",
+      desktopDescription: "Sistemas internos y de monitoreo en tiempo real con Tauri, React y .NET.",
+      deliveryDescription: "CI/CD con Jenkins, calidad de código con SonarQube, despliegue y mantenimiento.",
     },
     homeServices: {
       eyebrow: serviceCatalog.es.landing.eyebrow,
@@ -141,36 +141,35 @@ const allTranslations: Record<Locale, Translations> = {
     },
     projects: {
       eyebrow: "Proyectos",
-      title: "Casos relevantes y entregables concretos",
-      caseLabel: "Caso",
-      viewSiteLabel: "Ver sitio →",
-      technologiesLabel: "tecnologías",
+      title: "Proyectos destacados",
+      description: "Una selección de proyectos personales y freelance, con su código o el sitio en producción.",
+      viewSiteLabel: "Ver sitio",
     },
     timeline: {
       eyebrow: "Experiencia",
-      title: "Mi recorrido profesional",
+      title: "Trayectoria profesional",
+      description: "Empresas privadas, sector público y proyectos freelance en los que he trabajado.",
       freelanceLabel: "Freelance",
-      employmentLabel: "Empleo",
-      viewCompanyLabel: "Ver empresa →",
-      viewSiteLabel: "Ver sitio →",
       currentLabel: "Actual",
     },
     skills: {
       eyebrow: "Formación y stack",
-      title: "Tecnologías, estudios y certificaciones",
-      stackTitle: "Stack técnico",
+      title: "Tecnologías y formación",
       educationTitle: "Educación",
       certificationsTitle: "Certificaciones",
       inProgressLabel: "En curso",
     },
     contact: {
-      talk: "Hablemos",
-
-      projectTitle: "¿Qué proyecto quieres construir?",
+      talk: "Contacto",
+      projectTitle: "¿Trabajamos juntos?",
       projectDescription:
-        "Desarrollo web, apps y sistemas con enfoque senior, pensando en claridad de negocio, rendimiento y entregables profesionales.",
-      employee: "Busco un empleado",
-      freelance: "Busco freelance",
+        "Estoy abierto a nuevas oportunidades laborales y a proyectos freelance. Escríbeme por el canal que prefieras y te responderé lo antes posible.",
+      employee: "Busco contratar",
+      freelance: "Necesito un proyecto",
+      employeeTitle: "Disponible para posiciones Full Stack o Backend",
+      employeeDescription:
+        "Experiencia con Java, Spring Boot, Angular, React, Node.js y Flutter en equipos ágiles. Puedes descargar mi CV o escribirme directamente para coordinar una entrevista.",
+      emailMe: "Enviar un correo",
       downloadCV: "Descargar CV",
       fastReply: "Respuesta rápida",
       requirementsTitle: "Cuéntame qué necesita tu negocio",
@@ -178,43 +177,20 @@ const allTranslations: Record<Locale, Translations> = {
         "El formulario reúne la información del negocio, los módulos y las integraciones para preparar una propuesta ajustada al alcance real.",
       requirementsButton: "Completar formulario de requisitos",
       downloadCatalog: "Descargar catálogo de precios (Word)",
-      directMessage: "¿Prefieres conversar primero?",
+      directMessage: "Conversar primero",
       whatsappIntro: "Hola Gary, quisiera conversar sobre un proyecto de software.",
-      services: "Servicios",
-      serviceCards: [
-        {
-          title: "Landing pages",
-          desc: "Presentación clara y con foco en conversión.",
-        },
-        {
-          title: "Apps web",
-          desc: "Interfaces modernas con experiencia de usuario sólida.",
-        },
-        {
-          title: "Sistemas internos",
-          desc: "Dashboards, procesos, CRUD y automatización.",
-        },
-        {
-          title: "E-commerce",
-          desc: "Catálogo, pagos, pedidos y seguimiento.",
-        },
-      ],
       emailCardTitle: "Email",
-      emailCardFooter: "",
       whatsapp: "WhatsApp",
       githubCard: "GitHub",
       githubFooter: "Revisa mi código",
       linkedinCard: "LinkedIn",
-      linkedinFooter: "Mi red profesional",
-      cvCard: "CV",
-      cvFooter: "Versión descargable",
-      coverage: "Perú en general · remoto / presencial",
-      employeeDescription:"",
-      freelanceDescription:
-        "Estos son proyectos que desarrollé para clientes. Viaja Cusco Tours es una landing page turística para presentar tours y facilitar consultas de viajeros.",
-      freelanceProjectLabel: "Proyecto freelance · Landing page turística",
+      linkedinFooter: "Perfil profesional",
+      coverage: "Cusco, Perú · remoto o presencial",
       allServices: "Ver todos los servicios",
-      viewSiteLabel: "Ver sitio →",
+    },
+    footer: {
+      rights: "Todos los derechos reservados.",
+      backToTop: "Volver arriba",
     },
   },
   en: {
@@ -224,28 +200,31 @@ const allTranslations: Record<Locale, Translations> = {
       projects: "Projects",
       services: "Services",
       contact: "Contact",
-      language: "Language",
-      context: "Content in English",
+      menu: "Open menu",
     },
     hero: {
+      headline: "Web, mobile and desktop systems",
       summary:
-        "Full Stack Developer with more than three and a half years of experience building web, mobile and desktop systems for the public and private sectors: CRM, ERP, accounting, real-time industrial monitoring and public management modernization.",
+        "3.5+ years building CRM, ERP, accounting platforms, real-time industrial monitoring and public sector modernization systems, owning the full cycle: database, business logic, deployment and maintenance.",
       projects: "View projects",
       contact: "Contact me",
-      downloadCV: "Download Resume",
-      focus: "Focus",
-      mobile: "Mobile",
-      desktop: "Desktop",
-      delivery: "Delivery",
-      backend: "Backend",
-      experience: "3.5+ years of experience",
-      englishLevelLabel: "English",
-      fullStack: "Public & private sector",
+      downloadCV: "Download resume",
       currentlyLabel: "Currently",
+      locationLabel: "Location",
+      experienceLabel: "Experience",
+      experienceValue: "3.5+ years",
+      englishLevelLabel: "English",
+      modeLabel: "Work mode",
+      modeValue: "Remote / onsite",
+      focus: "What I specialize in",
+      backend: "Backend & APIs",
+      mobile: "Mobile apps",
+      desktop: "Desktop software",
+      delivery: "Continuous delivery",
       backendDescription: "Services and APIs with Java, Spring Boot, Node.js and GraphQL on PostgreSQL and MySQL.",
-      mobileDescription: "Mobile apps with clear UX and functional flow.",
-      desktopDescription: "Internal systems, dashboards and business tools.",
-      deliveryDescription: "Full cycle with CI/CD (Jenkins), code quality (SonarQube), deployment and maintenance.",
+      mobileDescription: "Flutter apps published on Google Play, with clear UX and offline support.",
+      desktopDescription: "Internal and real-time monitoring systems with Tauri, React and .NET.",
+      deliveryDescription: "CI/CD with Jenkins, code quality with SonarQube, deployment and maintenance.",
     },
     homeServices: {
       eyebrow: serviceCatalog.en.landing.eyebrow,
@@ -257,79 +236,56 @@ const allTranslations: Record<Locale, Translations> = {
     },
     projects: {
       eyebrow: "Projects",
-      title: "Relevant cases and concrete deliverables",
-      caseLabel: "Case",
-      viewSiteLabel: "View site →",
-      technologiesLabel: "technologies",
+      title: "Featured projects",
+      description: "A selection of personal and freelance projects, with source code or the live site.",
+      viewSiteLabel: "View site",
     },
     timeline: {
       eyebrow: "Experience",
-      title: "My professional journey",
+      title: "Professional journey",
+      description: "Private companies, the public sector and freelance projects I have worked on.",
       freelanceLabel: "Freelance",
-      employmentLabel: "Employment",
-      viewCompanyLabel: "View company →",
-      viewSiteLabel: "View site →",
       currentLabel: "Current",
     },
     skills: {
       eyebrow: "Background & stack",
-      title: "Technologies, education and certifications",
-      stackTitle: "Tech stack",
+      title: "Technologies and education",
       educationTitle: "Education",
       certificationsTitle: "Certifications",
       inProgressLabel: "In progress",
     },
     contact: {
-      talk: "Let’s talk",
-      projectTitle: "What project do you want to build?",
+      talk: "Contact",
+      projectTitle: "Let’s work together",
       projectDescription:
-        "Web development, apps and systems with a senior mindset, prioritizing business clarity, performance and professional delivery.",
+        "I’m open to new job opportunities and freelance projects. Reach out through any channel and I’ll get back to you as soon as possible.",
       employee: "I’m hiring",
-      freelance: "I’m looking for a freelancer",
-      downloadCV: "Download Resume",
+      freelance: "I need a project",
+      employeeTitle: "Available for Full Stack or Backend roles",
+      employeeDescription:
+        "Experience with Java, Spring Boot, Angular, React, Node.js and Flutter in agile teams. Download my resume or email me directly to set up an interview.",
+      emailMe: "Send an email",
+      downloadCV: "Download resume",
       fastReply: "Quick reply",
       requirementsTitle: "Tell me what your business needs",
       requirementsDescription:
         "The form gathers business details, modules and integrations so I can prepare a proposal based on the actual scope.",
       requirementsButton: "Complete the requirements form",
       downloadCatalog: "Download price catalog (Word)",
-      directMessage: "Would you rather talk first?",
+      directMessage: "Talk first",
       whatsappIntro: "Hi Gary, I’d like to discuss a software project.",
-      services: "Services",
-      serviceCards: [
-        {
-          title: "Landing pages",
-          desc: "Clear layouts focused on conversion.",
-        },
-        {
-          title: "Web apps",
-          desc: "Modern interfaces with strong user experience.",
-        },
-        {
-          title: "Internal systems",
-          desc: "Dashboards, workflows, CRUD and automation.",
-        },
-        {
-          title: "E-commerce",
-          desc: "Catalog, payments, orders and tracking.",
-        },
-      ],
       emailCardTitle: "Email",
-      emailCardFooter: "",
       whatsapp: "WhatsApp",
       githubCard: "GitHub",
       githubFooter: "Check my code",
       linkedinCard: "LinkedIn",
-      linkedinFooter: "My professional network",
-      cvCard: "CV",
-      cvFooter: "Downloadable version",
-      coverage: "Peru in general · remote / onsite",
-      employeeDescription:"",
-      freelanceDescription:
-        "These are projects I built for clients. Viaja Cusco Tours is a tourism landing page showcasing tours and helping travelers get in touch.",
-      freelanceProjectLabel: "Freelance project · Tourism landing page",
+      linkedinFooter: "Professional profile",
+      coverage: "Cusco, Peru · remote or onsite",
       allServices: "View all services",
-      viewSiteLabel: "View site →",
+    },
+    footer: {
+      rights: "All rights reserved.",
+      backToTop: "Back to top",
     },
   },
 };

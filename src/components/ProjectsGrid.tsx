@@ -1,61 +1,86 @@
 "use client";
+import { FiArrowUpRight, FiFolder, FiGithub } from "react-icons/fi";
 import { personalProjects } from "@/data/personalProjects";
 import { Animated } from "@/components/Animated";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Badge } from "@/components/ui/Badge";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Project } from "@/types";
 
 export function ProjectsGrid() {
   const { locale, translations } = useLanguage();
-
   const projects = personalProjects[locale];
+  const t = translations.projects;
 
   return (
-    <section id="proyectos" className="px-4 md:px-8 max-w-[1400px] mx-auto py-20">
-      <SectionHeader
-        eyebrow={translations.projects.eyebrow}
-        title={translations.projects.title}
-      />
+    <section id="proyectos" className="border-t border-border py-20 md:py-28">
+      <div className="page-container">
+        <SectionHeader eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {projects.map(({ id, title, description, stack, repoUrl, demoUrl }: Project, index: number) => (
-          <Animated key={id} className="card-3d card-hover">
-            <div className="h-full rounded-[24px] border border-[rgba(213,178,124,0.18)] bg-[linear-gradient(135deg,rgba(39,29,21,0.96),rgba(30,23,18,0.99))] p-6 shadow-[0_18px_48px_rgba(8,5,3,0.42)]">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <Badge variant="soft">{translations.projects.caseLabel} {index + 1}</Badge>
-                <Badge>{stack.length} {translations.projects.technologiesLabel}</Badge>
-              </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {projects.map(({ id, title, description, stack, repoUrl, demoUrl }: Project) => {
+            const [name, subtitle] = title.split(" — ");
+            const primaryUrl = demoUrl ?? repoUrl;
+            return (
+              <Animated key={id} className="h-full">
+                <article className="card card-interactive group relative flex h-full flex-col p-6">
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white/[0.03] text-accent">
+                      <FiFolder />
+                    </span>
+                    <div className="relative z-10 flex items-center gap-1">
+                      {repoUrl && (
+                        <a
+                          href={repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`GitHub · ${name}`}
+                          className="icon-btn h-9 w-9 border-transparent"
+                        >
+                          <FiGithub />
+                        </a>
+                      )}
+                      {demoUrl && (
+                        <a
+                          href={demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${t.viewSiteLabel} · ${name}`}
+                          className="icon-btn h-9 w-9 border-transparent"
+                        >
+                          <FiArrowUpRight />
+                        </a>
+                      )}
+                    </div>
+                  </div>
 
-              <h3 className="font-bold text-xl mb-2 text-foreground">{title}</h3>
-              <p className="text-sm text-muted mb-4 leading-relaxed">{description}</p>
+                  <h3 className="text-lg font-semibold tracking-tight text-foreground">
+                    {primaryUrl ? (
+                      <a
+                        href={primaryUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition group-hover:text-accent after:absolute after:inset-0 after:content-['']"
+                      >
+                        {name}
+                      </a>
+                    ) : (
+                      name
+                    )}
+                  </h3>
+                  {subtitle && <p className="mt-1 text-sm text-subtle">{subtitle}</p>}
 
-              <div className="flex flex-wrap gap-2 mb-5">
-                {stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="inline-flex items-center rounded-full bg-background/80 border border-border px-2.5 py-1 text-[11px] font-medium text-foreground"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{description}</p>
 
-              <div className="mt-auto flex flex-wrap gap-3 text-sm">
-                {repoUrl && (
-                  <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-accent-secondary underline underline-offset-4">
-                    GitHub →
-                  </a>
-                )}
-                {demoUrl && (
-                  <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-accent-secondary underline underline-offset-4">
-                    {translations.projects.viewSiteLabel}
-                  </a>
-                )}
-              </div>
-            </div>
-          </Animated>
-        ))}
+                  <ul className="mt-auto flex flex-wrap gap-x-3 gap-y-1 pt-6 font-mono text-xs text-subtle">
+                    {stack.map((tech) => (
+                      <li key={tech}>{tech}</li>
+                    ))}
+                  </ul>
+                </article>
+              </Animated>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
