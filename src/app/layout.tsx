@@ -20,8 +20,10 @@ export const metadata: Metadata = {
   title: "Gary Chunga — Full Stack Developer",
   description:
     "Portafolio de Gary Brigham Chunga Castillo, Full Stack Developer con experiencia en Java, Spring Boot, Angular, React, Node.js, Flutter y sistemas de escritorio.",
-  icons: {
-    icon: "/favicon.ico",
+  // El sitio ya es oscuro: evita que extensiones como Dark Reader reescriban
+  // el HTML antes de la hidratación (provocaba errores de hydration mismatch).
+  other: {
+    "darkreader-lock": "true",
   },
 };
 
@@ -36,6 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
+      suppressHydrationWarning
       className={`${geistSansVariable} ${geistMonoVariable} h-full antialiased`}
     >
       <body id="top" className="min-h-full flex flex-col bg-background text-foreground">
