@@ -110,7 +110,7 @@ const allTranslations: Record<Locale, Translations> = {
     hero: {
       headline: "Sistemas web, móviles y de escritorio",
       summary:
-        "Más de tres años y medio construyendo CRM, ERP, plataformas contables, monitoreo industrial en tiempo real y sistemas para la modernización de la gestión pública, asumiendo el ciclo completo: base de datos, lógica de negocio, despliegue y mantenimiento.",
+        "Soy desarrollador freelance en Cusco. Llevo más de tres años y medio construyendo CRM, ERP, plataformas contables, monitoreo industrial en tiempo real y sistemas para la modernización de la gestión pública, asumiendo el ciclo completo: base de datos, lógica de negocio, despliegue y mantenimiento.",
       projects: "Ver proyectos",
       contact: "Contactarme",
       downloadCV: "Descargar CV",
@@ -205,7 +205,7 @@ const allTranslations: Record<Locale, Translations> = {
     hero: {
       headline: "Web, mobile and desktop systems",
       summary:
-        "3.5+ years building CRM, ERP, accounting platforms, real-time industrial monitoring and public sector modernization systems, owning the full cycle: database, business logic, deployment and maintenance.",
+        "I am a freelance software developer based in Cusco, Peru. I have spent over three and a half years building CRM, ERP, accounting platforms, real-time industrial monitoring and public sector modernization systems, owning the full cycle: database, business logic, deployment and maintenance.",
       projects: "View projects",
       contact: "Contact me",
       downloadCV: "Download resume",
