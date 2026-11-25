@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  verification: {
+    google: "6Li1CK04QaB6KMydgZ5QRzRr8uvuZSrE-pLswU-pTh8",
+  },
   title: "Gary Chunga — Full Stack Developer",
   description:
     "Portafolio de Gary Brigham Chunga Castillo, Full Stack Developer con experiencia en Java, Spring Boot, Angular, React, Node.js, Flutter y sistemas de escritorio.",
